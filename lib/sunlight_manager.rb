@@ -19,12 +19,7 @@ class SunlightManager
 
   def get_by_zip(zip)
     path = '/legislators/locate'
-    response = @connection.get(path, apikey: ENV['SUNLIGHT_API_KEY'], zip: 11206)
+    response = @connection.get(path, apikey: ENV['SUNLIGHT_API_KEY'], zip: zip)
     response.body['results']
   end
-end
-
-def boo
-  m = SunlightManager.new
-  m.get_by_zip(11206)
 end
