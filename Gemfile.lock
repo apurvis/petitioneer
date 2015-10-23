@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/apurvis/sunlight_labs.git
-  revision: e01e80b5f6fc87e3ceb1a419448ef0ee53761781
+  revision: 823d972c3245dd5d342328acf6e32111b31b429e
   specs:
     sunlight_labs (0.1.0)
       faraday
