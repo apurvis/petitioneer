@@ -3,23 +3,25 @@
    <%= text_field(:search, :zip) %>
 <% end %>
 
-<table>
-   <tr>
-      <th>Name</th>
-      <th>Phone</th>
-      <th>Skype</th>
-      <th>Twitter</th>
-      <th>Email</th>
-      <th>Contact Form</th>
-   </tr>
-   <% @legislators.each do |l| %>
+<% if @legislators %>
+   <table>
       <tr>
-         <td><%= "#{l['first_name']} #{l['last_name']}" %></td>
-         <td><%= "#{l['phone']}" %></td>
-         <td><%= link_to('skype', l['skype_link']) %></td>
-         <td><%= link_to('twitter', "http://twitter.com/#{l['twitter_id']}") %></td>
-         <td><%= link_to('email', "mailto:#{l['oc_email']}?&subject=paidleave%body=Mypetition") %></td>
-         <td><%= link_to('contactform', l['contact_form']) %></td>
+         <th>Name</th>
+         <th>Phone</th>
+         <th>Skype</th>
+         <th>Twitter</th>
+         <th>Email</th>
+         <th>Contact Form</th>
       </tr>
-   <% end %>
-</table>
+      <% @legislators.each do |l| %>
+         <tr>
+            <td><%= "#{l['first_name']} #{l['last_name']}" %></td>
+            <td><%= "#{l['phone']}" %></td>
+            <td><%= link_to('skype', l['skype_link']) %></td>
+            <td><%= link_to('twitter', "http://twitter.com/#{l['twitter_id']}") %></td>
+            <td><%= link_to('email', "mailto:#{l['oc_email']}?&subject=paidleave%body=Mypetition") %></td>
+            <td><%= link_to('contactform', l['contact_form']) %></td>
+         </tr>
+      <% end %>
+   </table>
+<% end %>
