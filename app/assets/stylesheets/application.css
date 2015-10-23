@@ -13,3 +13,29 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+   font-family: Lato;
+}
+
+td, th {
+   padding-left: 3px;
+   padding-right: 3px;
+}
+
+th {
+   border: 1px solid black;
+}
+
+td {
+    background-color: white;
+}
+
+.basic_info {
+   background-color: #E6F0FF;
+   border: 1px solid black;
+   clear: both;
+   margin-top: 10px;
+    padding: 10px;
+   float: left;
+}

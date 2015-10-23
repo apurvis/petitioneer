@@ -1,5 +1,8 @@
-Share us on twitter! <%= link_to('tweet javascript', "https://twitter.com/share", class: 'twitter-share-button' ) %>
 <script type="text/javascript" async src="//platform.twitter.com/widgets.js"></script>
+
+<% content_for :title do %>
+   <%= "Tweetstorm Your Representatives #{@zip}" %>
+<% end %>
 
 <%= form_tag(welcome_index_path, method: :get, class: 'navbar-form', id: 'search-form') do %>
    <%= label_tag(:search_by_zip) %>
@@ -7,32 +10,36 @@ Share us on twitter! <%= link_to('tweet javascript', "https://twitter.com/share"
 <% end %>
 
 <% if @legislators %>
-   <table>
-      <tr>
-         <th>Chamber</th>
-         <th>Name</th>
-         <th>Phone</th>
-         <th>Skype</th>
-         <th>Tweet</th>
-         <th>Email</th>
-         <th>Raw email</th>
-         <th>Contact Form</th>
-      </tr>
-      <% @legislators.each do |l| %>
+   <div class='basic_info'>
+      <table>
          <tr>
-            <td><%= "#{l['chamber']}" %></td>
-            <td><%= "#{l['first_name']} #{l['last_name']}" %></td>
-            <td><%= link_to("#{l['phone']}", "tel:#{l['phone']}") %></td>
-            <td><%= link_to('auto skype', l['skype_link']) %></td>
-            <% if l['twitter_id'] %>
-               <td><%= link_to('tweet your support', "http://twitter.com/intent/tweet?text=I support Karls Law @#{l['twitter_id']}")%></td>
-            <% else %>
-               <td></td>
-            <% end %>
-            <td><%= link_to('email', "mailto:#{l['oc_email']}") %></td>
-            <td><%= l['oc_email'] %></td>
-            <td><%= link_to('contactform', l['contact_form']) %></td>
+            <th>Chamber</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Skype</th>
+            <th>Tweet</th>
+            <th>Email</th>
+            <th>Raw email</th>
+            <th>Contact Form</th>
          </tr>
-      <% end %>
-   </table>
+
+         <% @legislators.each do |l| %>
+            <tr>
+               <td><%= "#{l['chamber']}" %></td>
+               <td><%= "#{l['first_name']} #{l['last_name']}" %></td>
+               <td><%= link_to("#{l['phone']}", "tel:#{l['phone']}") %></td>
+               <td><%= link_to('skype their phone number', l['skype_link']) %></td>
+               <% if l['twitter_id'] %>
+                  <td><%= link_to('tweet your support', "http://twitter.com/intent/tweet?text=I support Karls Law @#{l['twitter_id']}")%></td>
+               <% else %>
+                  <td></td>
+               <% end %>
+               <td><%= link_to('email', "mailto:#{l['oc_email']}") %></td>
+               <td><%= l['oc_email'] %></td>
+               <td><%= link_to('contactform', l['contact_form']) %></td>
+            </tr>
+         <% end %>
+      </table>
+   </div>
 <% end %>
+<div style='clear: both;'>Share us on twitter! <%= link_to('tweet', "https://twitter.com/share", class: 'twitter-share-button' ) %></div>
