@@ -1,3 +1,7 @@
+class SunlightLabs::Congress::Legislator
+  attr_accessor :skype_link
+end
+
 class PetitionsController < ApplicationController
   def index
     @petitions = Petition.all
@@ -8,16 +12,16 @@ class PetitionsController < ApplicationController
 
     if params[:search] && params[:search][:zip]
       @zip = params[:search][:zip]
-      @legislators = SunlightManager.new.get_by_zip(params[:search][:zip])
+      @legislators = SunlightLabs::Congress::Legislator.where(zip: params[:search][:zip])
 
       if @legislators.empty?
         flash.alert = "No representatives found."
         redirect_to welcome_index_path
       else
         @legislators.each do |l|
-          l['skype_link'] = 'skype:+1' + l['phone'].gsub(/[^\d]/, '') + '?call'
-          if l['last_name'] == 'Gillibrand'
-            l['twitter_id'] = 'SenGillibrand'
+          l.skype_link = 'skype:+1' + l['phone'].gsub(/[^\d]/, '') + '?call'
+          if l.last_name == 'Gillibrand'
+#            l.twitter_id = 'SenGillibrand'
           end
         end
       end

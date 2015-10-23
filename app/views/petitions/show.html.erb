@@ -1,13 +1,17 @@
 <% content_for :title do %>
-   <%= "Petition #{@petition.tweet_text}" %>
+   <%= "#{@petition.tweet_text}" %>
 <% end %>
 
-<%= render partial: 'petition_table', locals: { petitions: [@petition] } %>
+<div class='purple_info'>
+   <%= render partial: 'petition_table', locals: { petitions: [@petition] } %>
+</div>
 
+<div class='basic_info'>
 <%= form_tag(petition_path(@petition), method: :get, class: 'navbar-form', id: 'search-form') do %>
    <%= label_tag(:search_by_zip) %>
    <%= text_field(:search, :zip) %>
 <% end %>
+</div>
 
 <% if @legislators %>
    <div class='basic_info'>
@@ -25,22 +29,22 @@
 
          <% @legislators.each do |l| %>
             <tr>
-               <td><%= "#{l['chamber']}" %></td>
-               <td><%= "#{l['first_name']} #{l['last_name']}" %></td>
-               <td><%= link_to("#{l['phone']}", "tel:#{l['phone']}") %></td>
-               <td><%= link_to('skype their phone number', l['skype_link']) %></td>
-               <% if l['twitter_id'] %>
-                  <td><%= link_to('tweet your support', "http://twitter.com/intent/tweet?text=#{@petition.tweet_text} @#{l['twitter_id']}")%></td>
+               <td><%= "#{l.chamber}" %></td>
+               <td><%= "#{l.first_name} #{l.last_name}" %></td>
+               <td><%= link_to("#{l.phone}", "tel:#{l.phone}") %></td>
+               <td><%= link_to('skype their phone number', l.skype_link) %></td>
+               <% if l.twitter_id %>
+                  <td><%= link_to('tweet your support', "http://twitter.com/intent/tweet?text=#{@petition.tweet_text} @#{l.twitter_id}")%></td>
                <% else %>
                   <td></td>
                <% end %>
-               <td><%= link_to('email', "mailto:#{l['oc_email']}") %></td>
-               <td><%= l['oc_email'] %></td>
-               <td><%= link_to('contactform', l['contact_form']) %></td>
+               <td><%= link_to('email', "mailto:#{l.oc_email}") %></td>
+               <td><%= l.oc_email %></td>
+               <td><%= link_to('contactform', l.contact_form) %></td>
             </tr>
          <% end %>
       </table>
    </div>
 <% end %>
 
-<div style='clear: both;'>Share us on twitter! <%= link_to('tweet', "https://twitter.com/share", class: 'twitter-share-button' ) %></div>
+<div style='clear: both;'>Share this petition on twitter! <%= link_to('tweet', "https://twitter.com/share", class: 'twitter-share-button' ) %></div>

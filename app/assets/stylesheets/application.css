@@ -36,6 +36,17 @@ td {
    border: 1px solid black;
    clear: both;
    margin-top: 10px;
-    padding: 10px;
+   padding: 10px;
    float: left;
+}
+
+.extended_info {
+   @extend .basic_info;
+   background-color: #CCFFFF;
+}
+
+.purple_info {
+   @extend .extended_info;
+   width: 80%;
+   background-color: #FAF1FF;
 }
