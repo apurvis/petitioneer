@@ -1,10 +1,14 @@
+ruby '2.2.2'
+
 source 'https://rubygems.org'
 
 gem 'faraday'
 gem 'faraday_middleware'
+
 gem 'pg'
 gem 'puma'
 gem 'rails', '4.2.3'
+gem 'rails_12factor'
 gem 'sunlight'
 
 # Use SCSS for stylesheets
