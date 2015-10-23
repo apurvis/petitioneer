@@ -1,4 +1,4 @@
-<%= link_to('tweet javascript', "https://twitter.com/share", class: 'twitter-share-button' ) %>
+Share us on twitter! <%= link_to('tweet javascript', "https://twitter.com/share", class: 'twitter-share-button' ) %>
 <script type="text/javascript" async src="//platform.twitter.com/widgets.js"></script>
 
 <%= form_tag(welcome_index_path, method: :get, class: 'navbar-form', id: 'search-form') do %>
@@ -14,7 +14,6 @@
          <th>Phone</th>
          <th>Skype</th>
          <th>Tweet</th>
-         <th>Tweet JS</th>
          <th>Email</th>
          <th>Raw email</th>
          <th>Contact Form</th>
@@ -27,8 +26,6 @@
             <td><%= link_to('auto skype', l['skype_link']) %></td>
             <% if l['twitter_id'] %>
                <td><%= link_to('tweet your support', "http://twitter.com/intent/tweet?text=I support Karls Law @#{l['twitter_id']}")%></td>
-               <td><%= link_to('tweet javascript', "https://twitter.com/share", { 'data-text' => "wwww @#{l['twitter_id']}" }) %></td>
-
             <% else %>
                <td></td>
             <% end %>
@@ -39,8 +36,3 @@
       <% end %>
    </table>
 <% end %>
-
-
-
-<a href="https://twitter.com/share" class="twitter-share-button" data-text="viviviviviv">Tweet</a>
-<!-- ?subject=Karl's Law&body=I wanted to voice my support for Karl's law>
