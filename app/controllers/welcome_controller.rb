@@ -9,7 +9,12 @@ class WelcomeController < ApplicationController
         flash.alert = "No representatives found."
         redirect_to welcome_index_path
       else
-        @legislators.each { |l| l['skype_link'] = 'skype:+1' + l['phone'].gsub(/[^\d]/, '') + '?call' }
+        @legislators.each do |l|
+          l['skype_link'] = 'skype:+1' + l['phone'].gsub(/[^\d]/, '') + '?call'
+          if l['last_name'] == 'Gillibrand'
+            l['twitter_id'] = 'SenGillibrand'
+          end
+        end
         puts @legislators
       end
     end
