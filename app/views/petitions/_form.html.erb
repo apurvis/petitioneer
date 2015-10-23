@@ -1,0 +1,22 @@
+<%= form_for @petition do |f| %>
+   <p>
+      <%= f.label :petition_text %>
+      <%= f.text_area :petition_text, cols: 100, rows: 10 %>
+   </p>
+
+   <p>
+      <%= f.label :phone_script %>
+      <%= f.text_area :phone_script, cols: 100, rows: 10 %>
+   </p>
+
+   <p>
+      <%= f.label :tweet_text %>
+      <%= f.text_area :tweet_text, cols: 75, rows: 2 %>
+   </p>
+
+   <p>
+      <%= f.label :petitioner %><br>
+      <%= f.text_field :petitioner, size: 80 %>
+   </p>
+
+<% end %>

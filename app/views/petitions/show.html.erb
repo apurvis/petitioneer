@@ -1,8 +1,10 @@
 <% content_for :title do %>
-   <%= "Tweetstorm Your Representatives #{@zip}" %>
+   <%= "Petition #{@petition.tweet_text}" %>
 <% end %>
 
-<%= form_tag(welcome_index_path, method: :get, class: 'navbar-form', id: 'search-form') do %>
+<%= render partial: 'petition_table', locals: { petitions: [@petition] } %>
+
+<%= form_tag(petition_path(@petition), method: :get, class: 'navbar-form', id: 'search-form') do %>
    <%= label_tag(:search_by_zip) %>
    <%= text_field(:search, :zip) %>
 <% end %>
@@ -28,7 +30,7 @@
                <td><%= link_to("#{l['phone']}", "tel:#{l['phone']}") %></td>
                <td><%= link_to('skype their phone number', l['skype_link']) %></td>
                <% if l['twitter_id'] %>
-                  <td><%= link_to('tweet your support', "http://twitter.com/intent/tweet?text=I support Karls Law @#{l['twitter_id']}")%></td>
+                  <td><%= link_to('tweet your support', "http://twitter.com/intent/tweet?text=#{@petition.tweet_text} @#{l['twitter_id']}")%></td>
                <% else %>
                   <td></td>
                <% end %>
@@ -40,4 +42,5 @@
       </table>
    </div>
 <% end %>
+
 <div style='clear: both;'>Share us on twitter! <%= link_to('tweet', "https://twitter.com/share", class: 'twitter-share-button' ) %></div>
