@@ -1,4 +1,4 @@
-require File.join(Rails.root, '/lib/sunlight_manager.rb')
+require File.join(Rails.root, 'lib/sunlight_manager.rb')
 
 class WelcomeController < ApplicationController
   def index
