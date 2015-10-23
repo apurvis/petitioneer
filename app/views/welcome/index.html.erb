@@ -10,7 +10,7 @@
          <th>Name</th>
          <th>Phone</th>
          <th>Skype</th>
-         <th>Twitter</th>
+         <th>Tweet</th>
          <th>Email</th>
          <th>Contact Form</th>
       </tr>
@@ -21,10 +21,8 @@
             <td><%= link_to("#{l['phone']}", "tel:#{l['phone']}") %></td>
             <td><%= link_to('auto skype', l['skype_link']) %></td>
             <% if l['twitter_id'] %>
-               <td><%= link_to('twitter account', "http://twitter.com/#{l['twitter_id']}") %></td>
                <td><%= link_to('tweet your support', "http://twitter.com/home/?status=I support Karls Law @#{l['twitter_id']}")%></td>
             <% else %>
-               <td></td>
                <td></td>
             <% end %>
             <td><%= link_to('email', "mailto:#{l['oc_email']}?subject=Karl's Law&body=I wanted to voice my support for Karl's law") %></td>
