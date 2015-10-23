@@ -9,7 +9,7 @@ gem 'pg'
 gem 'puma'
 gem 'rails', '4.2.3'
 gem 'rails_12factor'
-gem 'sunlight'
+gem 'sunlight_labs', github: 'apurvis/sunlight_labs'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
