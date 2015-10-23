@@ -15,7 +15,6 @@ class WelcomeController < ApplicationController
             l['twitter_id'] = 'SenGillibrand'
           end
         end
-        puts @legislators
       end
     end
   end
