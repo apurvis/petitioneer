@@ -1,3 +1,7 @@
+<%= link_to('tweet javascript', "https://twitter.com/share", class: 'twitter-share-button' ) %>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
 <%= form_tag(welcome_index_path, method: :get, class: 'navbar-form', id: 'search-form') do %>
    <%= label_tag(:search_by_zip) %>
    <%= text_field(:search, :zip) %>
@@ -11,7 +15,9 @@
          <th>Phone</th>
          <th>Skype</th>
          <th>Tweet</th>
+         <th>Tweet JS</th>
          <th>Email</th>
+         <th>Raw email</th>
          <th>Contact Form</th>
       </tr>
       <% @legislators.each do |l| %>
@@ -22,14 +28,19 @@
             <td><%= link_to('auto skype', l['skype_link']) %></td>
             <% if l['twitter_id'] %>
                <td><%= link_to('tweet your support', "http://twitter.com/home/?status=I support Karls Law @#{l['twitter_id']}")%></td>
+               <td><%= link_to('tweet javascript', "https://twitter.com/share", { 'data-text' => "wwww @#{l['twitter_id']}" }) %></td>
             <% else %>
                <td></td>
             <% end %>
             <td><%= link_to('email', "mailto:#{l['oc_email']}") %></td>
+            <td><%= l['oc_email'] %></td>
             <td><%= link_to('contactform', l['contact_form']) %></td>
          </tr>
       <% end %>
    </table>
 <% end %>
 
+
+
+<a href="https://twitter.com/share" class="twitter-share-button" data-text="viviviviviv">Tweet</a>
 <!-- ?subject=Karl's Law&body=I wanted to voice my support for Karl's law>
