@@ -22,6 +22,7 @@
             <th>Phone</th>
             <th>Skype</th>
             <th>Tweet</th>
+            <th>Facebook</th>
             <th>Email</th>
             <th>Raw email</th>
             <th>Contact Form</th>
@@ -35,6 +36,11 @@
                <td><%= link_to('skype their phone number', l.skype_link) %></td>
                <% if l.twitter_id %>
                   <td><%= link_to('tweet your support', "http://twitter.com/intent/tweet?text=#{@petition.tweet_text} @#{l.twitter_id}")%></td>
+               <% else %>
+                  <td></td>
+               <% end %>
+               <% if l.facebook_link %>
+                  <td><%= link_to('facebook', l.facebook_link)%></td>
                <% else %>
                   <td></td>
                <% end %>
